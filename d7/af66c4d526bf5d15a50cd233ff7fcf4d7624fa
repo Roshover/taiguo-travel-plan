@@ -1,0 +1,38 @@
+index.html
+  s_966ddaeda50099::t_6b96ee96c2a439 344
+  s_966ddaeda50099::t_65b95e89d3bad1 296
+  s_966ddaeda50099::t_e7e945f72d218f 758
+  s_966ddaeda50099::t_9b6c8da1f234fb 687
+  s_966ddaeda50099::t_596f2f6999bc58 225
+  s_966ddaeda50099::t_845bdfb2e0fb9c 1214
+  s_966ddaeda50099::t_245449727630fc 1244-1245
+  s_966ddaeda50099::t_729fa8f62650d3 231
+  s_966ddaeda50099::t_b5c3d9716533b0 1203
+  s_966ddaeda50099::t_fc2ba66863fb22 829
+  s_966ddaeda50099::t_9c62ed6c026951 865
+  s_966ddaeda50099::t_8a11182e43119c 1002
+  s_966ddaeda50099::t_75987ace5e3bf8 417-418,428-430,434,436-437,441,443-445,449,451-453,459-462,466,468-470,474,476-477,490-491,501-503,507,509-510,514,516-518,522,524-532,538-540,544,546-548,552,554-556
+  s_966ddaeda50099::t_6de45da1f26c4f 570
+  s_966ddaeda50099::t_b3defe82ff2fb3 243
+  s_966ddaeda50099::t_3232f7deb5bd48 208
+  s_966ddaeda50099::t_9ccca0a8884e4d 237
+  s_966ddaeda50099::t_b6949214c2c731 624
+  s_966ddaeda50099::t_9f344f5f655ffa 896
+  s_966ddaeda50099::t_7ed0a3ce33bc34 1167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "d7af66c4d526bf5d15a50cd233ff7fcf4d7624fa",
+  "prompts": {},
+  "sessions": {
+    "s_966ddaeda50099": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1f024135-4c5b-47b3-a60d-960d0097c9b3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Zaza Zhang <zaza.zhang@zoom.us>"
+    }
+  }
+}
