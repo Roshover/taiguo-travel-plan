@@ -1,0 +1,21 @@
+index.html
+  s_966ddaeda50099::t_be9d21ff60523e 1073-1114
+  s_966ddaeda50099::t_c632958ac9d6e9 903,909
+  s_966ddaeda50099::t_78c6f9b6f882fe 200
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "be26652dd845afc1a63dd1bd1934544a6e7d8660",
+  "prompts": {},
+  "sessions": {
+    "s_966ddaeda50099": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1f024135-4c5b-47b3-a60d-960d0097c9b3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Zaza Zhang <zaza.zhang@zoom.us>"
+    }
+  }
+}
