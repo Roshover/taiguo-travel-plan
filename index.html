@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泰国旅行计划 | 曼谷 + 普吉岛</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#0d7377;
+  --primary-light:#14919b;
+  --accent:#f0a500;
+  --accent-light:#ffc93c;
+  --bg:#faf8f5;
+  --card:#fff;
+  --text:#2d3436;
+  --text-light:#636e72;
+  --border:#e8e4df;
+  --shadow:0 2px 16px rgba(0,0,0,.06);
+  --radius:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* SCROLL ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease}
+.fade-in-left.visible{opacity:1;transform:translateX(0)}
+.fade-in-right{opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-in-right.visible{opacity:1;transform:translateX(0)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.7);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(232,228,223,.6);padding:0 24px;transition:background .3s,box-shadow .3s}
+nav.scrolled{background:rgba(255,255,255,.92);box-shadow:0 4px 20px rgba(0,0,0,.08)}
+nav .inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav .inner::-webkit-scrollbar{display:none}
+nav a{padding:14px 16px;font-size:14px;color:var(--text-light);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .3s,border-color .3s;font-weight:500;position:relative}
+nav a:hover{color:var(--primary)}
+nav a.active{color:var(--primary);border-bottom-color:var(--primary)}
+nav .logo{font-weight:700;color:var(--primary);font-size:16px;margin-right:12px;flex-shrink:0}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,rgba(13,115,119,.88) 0%,rgba(20,145,155,.82) 40%,rgba(15,185,177,.78) 100%),
+    url('https://images.unsplash.com/photo-1528181304800-259b08848526?w=1600&q=80') center/cover no-repeat;
+  color:#fff;padding:120px 24px 80px;text-align:center;position:relative;overflow:hidden
+}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(240,165,0,.15) 0%,transparent 60%)}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--bg);border-radius:50% 50% 0 0 / 100% 100% 0 0}
+.hero h1{font-family:'Playfair Display','Noto Sans SC',serif;font-size:clamp(32px,6vw,52px);font-weight:800;margin-bottom:12px;letter-spacing:-0.5px;text-shadow:0 2px 20px rgba(0,0,0,.2)}
+.hero .sub{font-size:18px;opacity:.9;margin-bottom:40px;font-weight:400;letter-spacing:.5px}
+.hero .stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.hero .stat{text-align:center;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border-radius:16px;padding:20px 28px;border:1px solid rgba(255,255,255,.2);transition:transform .3s,background .3s}
+.hero .stat:hover{transform:translateY(-4px);background:rgba(255,255,255,.2)}
+.hero .stat .num{font-size:40px;font-weight:900;display:block;line-height:1.1}
+.hero .stat .label{font-size:12px;opacity:.8;text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+
+/* SECTION */
+section{max-width:1100px;margin:0 auto;padding:56px 24px}
+.section-title{font-size:26px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.section-title .icon{font-size:30px}
+.section-desc{color:var(--text-light);margin-bottom:32px;font-size:15px}
+
+/* CARDS */
+.cards{display:grid;gap:20px}
+.cards.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.cards.cols-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.card .tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.tag-flight{background:#e8f8f5;color:var(--primary)}
+.tag-hotel{background:#fef9e7;color:#b7950b}
+.tag-food{background:#fde8e8;color:#c0392b}
+.tag-spot{background:#eaf2f8;color:#2471a3}
+.tag-tip{background:#f4ecf7;color:#7d3c98}
+.card h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.card .meta{font-size:13px;color:var(--text-light);margin-bottom:4px}
+.card .detail{font-size:14px;color:var(--text-light);line-height:1.7}
+.card a.map-link{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--primary);text-decoration:none;margin-top:10px;font-weight:600;padding:4px 12px;border-radius:20px;background:#e8f8f5;transition:background .2s,transform .2s}
+.card a.map-link:hover{background:#d0f0ed;transform:scale(1.03)}
+
+/* ROUTE FLOW */
+.route{position:relative;padding-left:32px}
+.route::before{content:'';position:absolute;left:11px;top:8px;bottom:8px;width:3px;background:linear-gradient(var(--primary),var(--accent));border-radius:2px}
+.route .node{position:relative;margin-bottom:28px;padding-left:28px}
+.route .node::before{content:'';position:absolute;left:-26px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--primary);border:3px solid var(--bg);box-shadow:0 0 0 3px rgba(13,115,119,.2);transition:transform .3s}
+.route .node:hover::before{transform:scale(1.3)}
+.route .node:last-child::before{background:var(--accent);box-shadow:0 0 0 3px rgba(240,165,0,.2)}
+.route .node .date{font-size:13px;font-weight:700;color:var(--primary)}
+.route .node .info{font-size:14px;color:var(--text-light)}
+
+/* DAY CARDS */
+.day{background:var(--card);border-radius:var(--radius);margin-bottom:20px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;transition:box-shadow .3s}
+.day:hover{box-shadow:0 8px 28px rgba(0,0,0,.09)}
+.day-header{padding:20px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;user-select:none;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.day-header:hover{background:linear-gradient(90deg,#f0f8f7,#faf8f5)}
+.day.open .day-header{border-bottom-color:var(--border)}
+.day-header .day-num{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;box-shadow:0 4px 12px rgba(13,115,119,.25);transition:transform .3s}
+.day:hover .day-header .day-num{transform:scale(1.05)}
+.day-header .day-info{flex:1}
+.day-header .day-info h3{font-size:16px;font-weight:700;margin-bottom:2px}
+.day-header .day-info .day-meta{font-size:13px;color:var(--text-light)}
+.day-header .arrow{font-size:20px;color:var(--text-light);transition:transform .4s cubic-bezier(.22,.61,.36,1);flex-shrink:0}
+.day.open .arrow{transform:rotate(180deg)}
+.day-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,.61,.36,1)}
+.day.open .day-body{max-height:8000px}
+.day-content{padding:0 24px 24px}
+
+/* DAY COVER (image banner) */
+.day-cover{position:relative;height:180px;border-radius:14px;overflow:hidden;margin-top:20px;background:linear-gradient(135deg,var(--primary),var(--primary-light));background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:20px 24px;color:#fff}
+.day-cover::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.7) 100%)}
+.day-cover .cover-inner{position:relative;z-index:1;display:flex;align-items:center;gap:14px;width:100%}
+.day-cover .cover-emoji{font-size:44px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
+.day-cover .cover-title{font-size:20px;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.4);letter-spacing:.5px}
+.day-cover .cover-sub{font-size:13px;opacity:.9;margin-top:2px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+@media(max-width:640px){
+  .day-cover{height:140px;padding:16px}
+  .day-cover .cover-emoji{font-size:34px}
+  .day-cover .cover-title{font-size:16px}
+}
+
+/* TIMELINE inside day */
+.timeline{margin-top:20px}
+.tl-item{display:flex;gap:16px;margin-bottom:20px;position:relative}
+.tl-item::before{content:'';position:absolute;left:23px;top:28px;bottom:-20px;width:2px;background:linear-gradient(var(--border),rgba(232,228,223,.3))}
+.tl-item:last-child::before{display:none}
+.tl-time{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#f0f8f7,#e8f8f5);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--primary);flex-shrink:0;position:relative;z-index:1;border:1px solid rgba(13,115,119,.1)}
+.tl-content{flex:1;padding-top:4px}
+.tl-content h4{font-size:15px;font-weight:600;margin-bottom:4px}
+.tl-content p{font-size:14px;color:var(--text-light);margin-bottom:4px}
+.tl-content a{color:var(--primary);text-decoration:none;font-size:13px;font-weight:600;padding:2px 10px;border-radius:16px;background:#e8f8f5;transition:background .2s}
+.tl-content a:hover{background:#d0f0ed}
+
+/* FOOD RECS */
+.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:16px}
+.food-item{background:#faf8f5;border-radius:12px;padding:16px;border:1px solid var(--border);transition:transform .25s}
+.food-item:hover{transform:translateY(-2px)}
+.food-item h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.food-item p{font-size:13px;color:var(--text-light)}
+
+/* DIVE GUIDE */
+.dive-schedule{background:linear-gradient(135deg,#0d7377,#14919b);color:#fff;border-radius:var(--radius);padding:32px;margin-bottom:24px;box-shadow:0 8px 32px rgba(13,115,119,.2)}
+.dive-schedule h3{font-size:18px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.dive-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.dive-step .time{background:rgba(255,255,255,.2);padding:4px 10px;border-radius:8px;font-size:13px;font-weight:700;flex-shrink:0;min-width:80px;text-align:center;backdrop-filter:blur(4px)}
+.dive-step .desc{font-size:14px;opacity:.9}
+
+.tips-list{columns:1;gap:20px}
+@media(min-width:640px){.tips-list{columns:2}}
+.tip-item{break-inside:avoid;background:var(--card);border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid var(--border);font-size:14px;line-height:1.6;transition:transform .25s}
+.tip-item:hover{transform:translateY(-2px)}
+.tip-item .tip-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;margin-right:8px;flex-shrink:0}
+.tip-item.important{border-left:3px solid #e74c3c;background:#fff5f5}
+
+/* SEAFOOD */
+.bargain-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:16px}
+.bargain-step{text-align:center;padding:24px 20px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
+.bargain-step:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.bargain-step .step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px;font-size:16px}
+.bargain-step h4{font-size:14px;margin-bottom:4px}
+.bargain-step p{font-size:13px;color:var(--text-light)}
+
+.price-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px;font-size:14px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.price-table th{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:12px 16px;text-align:left;font-weight:600}
+.price-table td{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.price-table tr:hover td{background:#f0f8f7}
+.price-table tr:last-child td{border-bottom:none}
+
+/* FOOTER */
+footer{text-align:center;padding:48px 24px;color:var(--text-light);font-size:13px;border-top:1px solid var(--border);margin-top:48px;background:linear-gradient(180deg,var(--bg),#f0ece7)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .hero{padding:80px 20px 60px}
+  .hero .stats{gap:16px}
+  .hero .stat{padding:14px 20px}
+  .hero .stat .num{font-size:30px}
+  section{padding:36px 16px}
+  nav a{padding:12px 10px;font-size:13px}
+  .day-header{padding:16px}
+  .day-content{padding:0 16px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <span class="logo">&#127969; 泰国行</span>
+    <a href="#flights">航班</a>
+    <a href="#hotels">酒店</a>
+    <a href="#route">路线</a>
+    <a href="#itinerary">每日行程</a>
+    <a href="#diving">皇帝岛潜水</a>
+    <a href="#seafood">海鲜攻略</a>
+    <a href="#tips">实用贴士</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>曼谷 + 普吉岛</h1>
+  <p class="sub">2025.9.25 — 10.6 &nbsp;|&nbsp; 上海出发</p>
+  <div class="stats">
+    <div class="stat"><span class="num">11</span><span class="label">天行程</span></div>
+    <div class="stat"><span class="num">4</span><span class="label">段航班</span></div>
+    <div class="stat"><span class="num">2</span><span class="label">家酒店</span></div>
+    <div class="stat"><span class="num">2</span><span class="label">城市</span></div>
+  </div>
+</div>
+
+<!-- FLIGHTS -->
+<section id="flights">
+  <h2 class="section-title"><span class="icon">&#9992;&#65039;</span> 航班信息</h2>
+  <p class="section-desc">共 4 段航班，注意普吉回曼谷当天转机回上海</p>
+  <div class="cards cols-2">
+    <div class="card">
+      <span class="tag tag-flight">去程</span>
+      <h3>上海 &#10140; 曼谷</h3>
+      <p class="meta">9月25日 周四 &nbsp;|&nbsp; 11:45 — 15:50</p>
+      <p class="detail">东方航空 MU8643 &nbsp;|&nbsp; 波音 737<br>上海浦东 PVG &#10140; 素万那普 BKK</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-flight">曼谷 &#10140; 普吉</span>
+      <h3>曼谷 &#10140; 普吉岛</h3>
+      <p class="meta">9月29日 周一 &nbsp;|&nbsp; 22:00 — 23:35</p>
+      <p class="detail">泰国越捷航空 VZ316<br>素万那普 BKK &#10140; 普吉 HKT</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-flight">普吉 &#10140; 曼谷</span>
+      <h3>普吉岛 &#10140; 曼谷</h3>
+      <p class="meta">10月5日 周日 &nbsp;|&nbsp; 19:10 — 20:45</p>
+      <p class="detail">曼谷航空 PG284 &nbsp;|&nbsp; 空客 A319<br>普吉 HKT &#10140; 素万那普 BKK</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-flight">回程</span>
+      <h3>曼谷 &#10140; 上海</h3>
+      <p class="meta">10月6日 周一 &nbsp;|&nbsp; 00:30 — 05:45</p>
+      <p class="detail">泰国国际航空 TG662 &nbsp;|&nbsp; 波音 787<br>素万那普 BKK &#10140; 上海浦东 PVG</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section id="hotels">
+  <h2 class="section-title"><span class="icon">&#127976;</span> 酒店住宿</h2>
+  <div class="cards cols-2">
+    <div class="card">
+      <span class="tag tag-hotel">曼谷 &middot; 4晚</span>
+      <h3>YANH 拉差哇酒店</h3>
+      <p class="meta">9月25日 — 9月29日</p>
+      <p class="detail">位于 Ratchawat 区，靠近老城区，出行方便。周边有本地市场和小吃街。</p>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=YANH+Ratchawat+Hotel+Bangkok" target="_blank">&#128205; 查看地图</a>
+    </div>
+    <div class="card">
+      <span class="tag tag-hotel">普吉 &middot; 6晚</span>
+      <h3>奥里科卡塔度假酒店</h3>
+      <p class="meta">9月29日 — 10月5日</p>
+      <p class="detail">Aurico Kata Resort & Spa，位于卡塔海滩区域，靠近海边，周边餐饮丰富。</p>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Aurico+Kata+Resort+Spa+Phuket" target="_blank">&#128205; 查看地图</a>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE -->
+<section id="route">
+  <h2 class="section-title"><span class="icon">&#128739;&#65039;</span> 路线总览</h2>
+  <p class="section-desc">先曼谷后普吉，最后经曼谷转机回国</p>
+  <div class="card">
+    <div class="route">
+      <div class="node"><span class="date">9/25</span><span class="info"> &mdash; 上海飞抵曼谷，入住 YANH 酒店</span></div>
+      <div class="node"><span class="date">9/25-9/29</span><span class="info"> &mdash; 曼谷 4 天：老城寺庙、拳赛、夜市、购物</span></div>
+      <div class="node"><span class="date">9/29 晚</span><span class="info"> &mdash; 飞普吉岛，VZ316 22:00 起飞</span></div>
+      <div class="node"><span class="date">9/30-10/4</span><span class="info"> &mdash; 普吉 6 天：皇帝岛潜水、攀牙湾、老镇、天皇秀、海鲜</span></div>
+      <div class="node"><span class="date">10/5</span><span class="info"> &mdash; 普吉飞曼谷，当晚红眼航班回上海，10/6 早晨到达</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary">
+  <h2 class="section-title"><span class="icon">&#128197;</span> 每日行程</h2>
+  <p class="section-desc">点击展开查看每天详细安排、餐厅推荐和地图链接</p>
+
+  <!-- DAY 1: 9/25 -->
+  <div class="day open">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">9/25</div>
+      <div class="day-info">
+        <h3>抵达曼谷，轻松入住</h3>
+        <p class="day-meta">周四 &middot; 曼谷 &middot; YANH拉差哇酒店</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">15:50</div>
+            <div class="tl-content">
+              <h4>抵达素万那普机场 (BKK)</h4>
+              <p>取行李、买电话卡（机场 AIS/TrueMove 柜台，约 299 泰铢/8天）、换少量泰铢</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Suvarnabhumi+Airport+Bangkok" target="_blank">&#128205; 素万那普机场</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">16:30</div>
+            <div class="tl-content">
+              <h4>打车去酒店</h4>
+              <p>用 Grab 或 Bolt 叫车，约 45-70 分钟到 YANH 酒店。提前下载 Grab App。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">18:00</div>
+            <div class="tl-content">
+              <h4>入住 & 休整</h4>
+              <p>放行李、洗漱、休息调整状态</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=YANH+Ratchawat+Hotel+Bangkok" target="_blank">&#128205; YANH 酒店</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">19:00</div>
+            <div class="tl-content">
+              <h4>酒店周边简单晚餐</h4>
+              <p>不安排远处景点，酒店附近解决。尝试 Pad Thai、泰式炒饭、泰奶。Ratchawat 区有不少本地小吃摊。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2: 9/26 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">9/26</div>
+      <div class="day-info">
+        <h3>大皇宫 + 孔剧 + 泰拳之夜</h3>
+        <p class="day-meta">周五 &middot; 曼谷 &middot; 大皇宫 / 孔剧 / 拳赛</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">8:30</div>
+            <div class="tl-content">
+              <h4>大皇宫 + 玉佛寺</h4>
+              <p>曼谷必去。建议 8:30 到避开人流。门票 500 泰铢，需穿长裤、有袖上衣。慢慢逛，预计 2-3 小时。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Grand+Palace+Bangkok" target="_blank">&#128205; 大皇宫</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 午餐：Thip Samai Pad Thai</h4>
+              <p>曼谷最出名的 Pad Thai 老店，Google 评分 4.3，排队值得。招牌蛋包 Pad Thai 约 80 泰铢。距大皇宫步行约 10 分钟。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Thip+Samai+Pad+Thai+Bangkok" target="_blank">&#128205; Thip Samai</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:00</div>
+            <div class="tl-content">
+              <h4>坐班车去孔剧剧院</h4>
+              <p>大皇宫有免费班车前往 Sala Chalermkrung 皇家剧院。<strong>2:30 场次的班车：首班 13:30，末班 14:15</strong>，每 15 分钟一班。建议坐 13:30 首班车，不赶。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#f4ecf7;color:#7d3c98">14:30</div>
+            <div class="tl-content">
+              <h4>&#127917; 孔剧 (Khon) — 泰国国粹表演</h4>
+              <p>Sala Chalermkrung 皇家剧院，2:30 PM 场。泰国传统面具舞蹈剧，演绎罗摩衍那史诗，华丽的服饰和面具非常震撼。演出约 1-1.5 小时。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Sala+Chalermkrung+Royal+Theatre+Bangkok" target="_blank">&#128205; Sala Chalermkrung 皇家剧院</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">16:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 下午茶（视时间而定）</h4>
+              <p>剧院在唐人街/老城区附近，推荐去 <strong>After You Dessert Cafe</strong>（招牌蜜糖吐司和刨冰，Google 4.4）或 <strong>Mont Nomsod</strong>（老牌泰式吐司+奶茶，Google 4.3）。边休息边等晚上拳赛。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=After+You+Dessert+Cafe+Bangkok" target="_blank">&#128205; After You</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=Mont+Nomsod+Bangkok" target="_blank">&#128205; Mont Nomsod</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">19:00</div>
+            <div class="tl-content">
+              <h4>&#129354; 拉差达慕拳击馆 — 泰拳比赛</h4>
+              <p>Rajadamnern Boxing Stadium，泰拳圣地。建议提前在官网或现场买票，二等座约 1000-1500 泰铢。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Rajadamnern+Boxing+Stadium+Bangkok" target="_blank">&#128205; 拉差达慕拳击馆</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">21:30</div>
+            <div class="tl-content">
+              <h4>考山路夜生活</h4>
+              <p>拳馆出来走几步就是考山路，喝杯酒感受背包客氛围，路边按摩 200 泰铢/小时。顺便吃个宵夜。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Khao+San+Road+Bangkok" target="_blank">&#128205; 考山路</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3: 9/27 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">9/27</div>
+      <div class="day-info">
+        <h3>水门寺 + ICONSIAM + 夜游湄南河</h3>
+        <p class="day-meta">周六 &middot; 曼谷 &middot; 水门寺 / ICONSIAM / 沙吞码头 / 湄南河游船</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">9:00</div>
+            <div class="tl-content">
+              <h4>水门寺 (Wat Paknam)</h4>
+              <p>以 80 米高佛塔内的绿色琉璃天花板闻名，极其出片。MRT 蓝线 Wat Paknam 站下车即到。免费参观，5 层楼逐层上去，顶层是震撼的翡翠绿穹顶。建议上午光线好时去拍照。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Wat+Paknam+Bhasicharoen+Bangkok" target="_blank">&#128205; 水门寺</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:00</div>
+            <div class="tl-content">
+              <h4>打车前往 ICONSIAM</h4>
+              <p>水门寺到 ICONSIAM 打 Grab 约 10-15 分钟，都在湄南河西岸，动线很顺。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:30</div>
+            <div class="tl-content">
+              <h4>ICONSIAM 河滨商场</h4>
+              <p>湄南河旁的超豪华商场。一楼 SookSiam 室内水上市场可以吃遍泰国各地小吃，还有各种品牌店和免税购物。河景观景台很美。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=ICONSIAM+Bangkok" target="_blank">&#128205; ICONSIAM</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 午餐：ICONSIAM SookSiam 水上市场</h4>
+              <p>一楼室内水上市场，汇集泰国 77 府的特色小吃。船面、海南鸡饭、芒果糯米饭、泰式奶茶，边走边吃。人均 200-400 泰铢。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">14:00</div>
+            <div class="tl-content">
+              <h4>ICONSIAM 购物</h4>
+              <p>逛商场、买伴手礼。有 King Power 免税店、NaRaYa 曼谷包、各种泰国本土品牌。累了找个咖啡馆坐一坐。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">17:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 早晚餐：建兴酒家 (Somboon Seafood)</h4>
+              <p>曼谷最出名的咖喱蟹！Google 评分 4.1。招牌咖喱炒蟹约 600-800 泰铢，必点。ICONSIAM 内就有分店，吃完直接坐免费船去沙吞码头。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Somboon+Seafood+ICONSIAM+Bangkok" target="_blank">&#128205; 建兴酒家 ICONSIAM 店</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">18:15</div>
+            <div class="tl-content">
+              <h4>免费接驳船到沙吞码头</h4>
+              <p>ICONSIAM 有免费摆渡船往返沙吞码头（BTS Saphan Taksin 站），船程仅 5 分钟。建议提前 30 分钟到码头候船。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Sathorn+Pier+Bangkok" target="_blank">&#128205; 沙吞码头</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">19:00</div>
+            <div class="tl-content">
+              <h4>&#127962;&#65039; 夜游湄南河 (Chao Phraya Dinner Cruise)</h4>
+              <p>乘船夜游湄南河，沿途欣赏郑王庙、大皇宫等地标夜景，灯光倒映河面非常浪漫。一般含自助晚餐和现场表演，航程约 2 小时。建议提前在 Klook 或官网订票。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Chao+Phraya+River+Cruise+Sathorn+Bangkok" target="_blank">&#128205; 湄南河游船</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4: 9/28 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">9/28</div>
+      <div class="day-info">
+        <h3>乍都乍市场 + Siam 购物 + 泰式按摩</h3>
+        <p class="day-meta">周日 &middot; 曼谷 &middot; Chatuchak / Siam / 按摩 / BAANMHEE KITCHEN</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">9:00</div>
+            <div class="tl-content">
+              <h4>乍都乍周末市场 (Chatuchak)</h4>
+              <p>全球最大户外市场之一，超过 15,000 个摊位！衣服、手工艺品、家居、美食应有尽有。周六日才有，别错过。BTS Mo Chit 站。建议穿舒适鞋，带现金。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Chatuchak+Weekend+Market+Bangkok" target="_blank">&#128205; 乍都乍市场</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 午餐：市场内小吃</h4>
+              <p>椰子冰淇淋（50泰铢）、烤肉串、芒果糯米饭、泰式奶茶。在市场里边逛边吃。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">14:00</div>
+            <div class="tl-content">
+              <h4>暹罗商圈 (Siam)</h4>
+              <p>BTS 到 Siam 站，约 15 分钟。逛 Siam Paragon（奢侈品+水族馆）、MBK Center（平价购物）、Siam Discovery。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Siam+Paragon+Bangkok" target="_blank">&#128205; Siam Paragon</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 下午茶：After You Dessert Cafe</h4>
+              <p>泰国超火甜品店，招牌蜜糖吐司和刨冰。Google 评分 4.4。Siam Paragon 店。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=After+You+Dessert+Cafe+Siam+Paragon" target="_blank">&#128205; After You</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">17:00</div>
+            <div class="tl-content">
+              <h4>&#128134; 正宗泰式按摩</h4>
+              <p>推荐 <strong>Health Land Spa</strong>（Siam 附近有分店），Google 评分 4.5。2 小时泰式古法按摩约 600 泰铢，环境干净正规。也可选 Siam 商圈附近的 Let's Relax Spa（Google 4.4）。走了一天逛下来，按摩完整个人满血复活。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Health+Land+Spa+Ekkamai+Bangkok" target="_blank">&#128205; Health Land</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=Let's+Relax+Spa+Siam+Square+Bangkok" target="_blank">&#128205; Let's Relax</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">19:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 晚餐：BAANMHEE KITCHEN</h4>
+              <p>位于朱拉隆功大学 Soi 20，离 Siam 商圈步行约 10 分钟。地道泰餐，在当地口碑不错。</p>
+              <a href="https://www.google.com/maps/place/1543+BAANMHEE+KITCHEN" target="_blank">&#128205; BAANMHEE KITCHEN</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">21:00</div>
+            <div class="tl-content">
+              <h4>回酒店休息</h4>
+              <p>明天最后半天在曼谷，早点回去收拾整理，准备晚上飞普吉。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5: 9/29 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">9/29</div>
+      <div class="day-info">
+        <h3>睡懒觉休整 + 飞普吉岛</h3>
+        <p class="day-meta">周一 &middot; 曼谷 &#10140; 普吉 &middot; VZ316 22:00</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">自然醒</div>
+            <div class="tl-content">
+              <h4>酒店睡懒觉</h4>
+              <p>前几天玩得比较累，今天不安排出门，在酒店好好休息恢复体力，为普吉岛做准备。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 午餐：酒店附近 / 外卖</h4>
+              <p>酒店附近找吃的或者用 Grab Food / LINE MAN 点外卖，泰国外卖 App 很方便。推荐试试当地小馆子或者叫一份芒果糯米饭。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:00</div>
+            <div class="tl-content">
+              <h4>收拾行李 & 退房</h4>
+              <p>整理行李，退房。可以在附近 7-11 买些零食和小老板海苔带走。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">19:00</div>
+            <div class="tl-content">
+              <h4>前往机场</h4>
+              <p>Grab 去素万那普机场，预留充足时间。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">22:00</div>
+            <div class="tl-content">
+              <h4>&#9992;&#65039; 飞普吉岛</h4>
+              <p>VZ316 &middot; 23:35 到达普吉。Grab 去奥里科酒店，车程约 45 分钟。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Aurico+Kata+Resort+Spa+Phuket" target="_blank">&#128205; 奥里科酒店</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6: 9/30 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">9/30</div>
+      <div class="day-info">
+        <h3>&#127754; 皇帝岛深潜一日游</h3>
+        <p class="day-meta">周二 &middot; 普吉 &middot; 皇帝岛方向体验深潜</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <p style="color:var(--primary);font-weight:600;margin-top:16px;margin-bottom:8px">&#128071; 详细潜水攻略见下方「皇帝岛潜水」专区</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">7:00</div>
+            <div class="tl-content">
+              <h4>码头集合出发</h4>
+              <p>巴东卡塔码头上船，约 8:30 开船前往皇帝岛方向</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">10:30</div>
+            <div class="tl-content">
+              <h4>第一次深潜</h4>
+              <p>教练讲解、穿装备、AB 两组轮流下潜。复习手势和基础动作后下水。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Racha+Island+Phuket" target="_blank">&#128205; 皇帝岛</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 船上午餐 + 浮潜</h4>
+              <p>船上提供午餐和饮料水果。不潜水时可以浮潜、游泳、拍照。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:30</div>
+            <div class="tl-content">
+              <h4>第二次深潜</h4>
+              <p>AB 两组轮流，教练帮拍照和视频</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:30</div>
+            <div class="tl-content">
+              <h4>返程</h4>
+              <p>冲淡水、换衣服、下船上车，教练传照片。约 16:30 送到酒店。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">18:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 晚餐：Kata 海滩附近</h4>
+              <p>推荐 The Boathouse Phuket（海景餐厅，Google 4.3）或 Kata Mama（平价泰餐）。潜水后好好吃一顿犒劳自己。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=The+Boathouse+Phuket+Kata" target="_blank">&#128205; The Boathouse</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7: 10/1 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">10/1</div>
+      <div class="day-info">
+        <h3>大象营 + 射击体验</h3>
+        <p class="day-meta">周三 &middot; 普吉 &middot; 大象营 / GOLD SHOOTER CLUB</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">7:30</div>
+            <div class="tl-content">
+              <h4>大象营接车</h4>
+              <p>赶最早 8:30 场次，大象营提供酒店接送服务，无需自己打车。提前和大象营确认接车时间。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">8:30</div>
+            <div class="tl-content">
+              <h4>&#129435; Patong Elephant Hug 大象营</h4>
+              <p>和大象互动、喂食、拍照，体验约 2-3 小时。建议穿可以弄脏的衣服和拖鞋。地址：53/20 Hasippi Rd, Pa Tong, Kathu District。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Patong+Elephant+Hug+Phuket" target="_blank">&#128205; Patong Elephant Hug</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:30</div>
+            <div class="tl-content">
+              <h4>回酒店换洗</h4>
+              <p>大象营会弄脏衣服，回酒店冲个澡换身衣服</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 午餐：酒店附近</h4>
+              <p>推荐 Pad Thai Shop Kata（平价好吃，Google 4.3）或 Kata Mama 餐厅，就近解决。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Pad+Thai+Shop+Kata+Phuket" target="_blank">&#128205; Pad Thai Shop</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">14:30</div>
+            <div class="tl-content">
+              <h4>&#127943; GOLD SHOOTER CLUB — 射击体验</h4>
+              <p>真枪实弹射击体验 + 拍照留念。可以选不同枪型（手枪、步枪、霰弹枪等），有教练全程指导，安全有保障。记得带护照。拍出来的照片很酷！</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Gold+Shooter+Club+Phuket" target="_blank">&#128205; GOLD SHOOTER CLUB</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">17:00</div>
+            <div class="tl-content">
+              <h4>回酒店休息</h4>
+              <p>今天活动量不小，回酒店泡泳池放松一下</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">19:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 晚餐：The Boathouse Phuket</h4>
+              <p>Kata 海滩边的海景餐厅，Google 评分 4.3。看着日落吃饭，氛围很好。人均 400-800 泰铢。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=The+Boathouse+Phuket+Kata" target="_blank">&#128205; The Boathouse</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 8: 10/2 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">10/2</div>
+      <div class="day-info">
+        <h3>悬崖餐厅打卡 + 清吧小酌</h3>
+        <p class="day-meta">周四 &middot; 普吉 &middot; 酒店休闲 / 悬崖餐厅 / 清吧</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">自然醒</div>
+            <div class="tl-content">
+              <h4>酒店早餐 + 游泳</h4>
+              <p>上午不安排出门，在酒店吃早餐、游泳、泡泳池，享受度假时光。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:00</div>
+            <div class="tl-content">
+              <h4>出发去悬崖餐厅</h4>
+              <p>三家备选，都在 Karon 区域离酒店不远，到时候随机应变选一家。打 Grab 前往。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fde8e8;color:#c0392b">13:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 悬崖餐厅打卡（三选一）</h4>
+              <p>
+                <strong>1. Commune</strong> — Karon 悬崖边，海景开阔<br>
+                <strong>2. Laem Sai Cup Caf&eacute;</strong> — 小众网红咖啡厅，拍照出片<br>
+                <strong>3. Tree Bay Clubhouse</strong> — 环境精致，Karon 区
+              </p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Commune+Karon+Phuket" target="_blank">&#128205; Commune</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=Laem+Sai+Cup+Cafe+Phuket" target="_blank">&#128205; Laem Sai Cup</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=Tree+Bay+Clubhouse+Karon+Phuket" target="_blank">&#128205; Tree Bay</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">16:00</div>
+            <div class="tl-content">
+              <h4>回酒店休息</h4>
+              <p>悬崖餐厅拍完照回酒店放松，为晚上清吧养精蓄锐</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">19:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 晚餐：Kata 附近</h4>
+              <p>推荐 Capri Restaurant（意式，Google 4.5）或 The Boathouse Phuket（海景泰餐，Google 4.3）。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Capri+Restaurant+Kata+Phuket" target="_blank">&#128205; Capri</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=The+Boathouse+Phuket+Kata" target="_blank">&#128205; The Boathouse</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">21:00</div>
+            <div class="tl-content">
+              <h4>&#127864; 清吧小酌</h4>
+              <p>找个安静的清吧坐一坐。推荐 <strong>Ska Bar</strong>（Kata 海滩旁露天酒吧，氛围轻松，Google 4.4）或 <strong>After Beach Bar</strong>（悬崖边看海喝酒，Google 4.3）。点杯鸡尾酒，吹吹海风，结束惬意的一天。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Ska+Bar+Kata+Phuket" target="_blank">&#128205; Ska Bar</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=After+Beach+Bar+Phuket" target="_blank">&#128205; After Beach Bar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 9: 10/3 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">10/3</div>
+      <div class="day-info">
+        <h3>&#129438; 芭东逛吃海鲜 + 天皇秀</h3>
+        <p class="day-meta">周五 &middot; 普吉 &middot; 芭东海滩 / 班赞海鲜 / Simon Cabaret</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <p style="color:var(--primary);font-weight:600;margin-top:16px;margin-bottom:8px">&#128071; 海鲜砍价攻略见下方「海鲜攻略」专区</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">10:00</div>
+            <div class="tl-content">
+              <h4>芭东海滩 (Patong Beach)</h4>
+              <p>普吉最热闹的海滩。可以玩水上项目：香蕉船、拖伞、摩托艇。记得砍价！也可以纯晒太阳发呆。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Patong+Beach+Phuket" target="_blank">&#128205; 芭东海滩</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 午餐：No.6 Restaurant</h4>
+              <p>芭东老牌泰餐，Google 评分 4.3。咖喱蟹、冬阴功、菠萝炒饭都不错。人均 200-350 泰铢。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=No.6+Restaurant+Patong+Phuket" target="_blank">&#128205; No.6 Restaurant</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">14:00</div>
+            <div class="tl-content">
+              <h4>江西冷购物中心 (Jungceylon)</h4>
+              <p>芭东最大商场，里面有 Big C 超市可以采购伴手礼。逛累了找个咖啡馆坐坐。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Jungceylon+Shopping+Center+Patong" target="_blank">&#128205; 江西冷</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fde8e8;color:#c0392b">16:30</div>
+            <div class="tl-content">
+              <h4>&#129438; 班赞海鲜市场 — 自选海鲜大餐</h4>
+              <p>一楼买海鲜（记得砍价！），二楼找档口加工。推荐：龙虾、老虎虾、螃蟹、扇贝。加工费每道约 100-300 泰铢。就在江西冷对面，走路 2 分钟。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Banzaan+Fresh+Market+Patong+Phuket" target="_blank">&#128205; 班赞海鲜市场</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#f4ecf7;color:#7d3c98">19:00</div>
+            <div class="tl-content">
+              <h4>&#127917; Simon Cabaret 天皇秀</h4>
+              <p>就在芭东区，吃完海鲜打车几分钟就到。普吉最著名的人妖表演秀，华丽的歌舞表演。门票约 700-900 泰铢，演出约 75 分钟。建议提前在网上订票。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Simon+Cabaret+Phuket" target="_blank">&#128205; Simon Cabaret</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">20:30</div>
+            <div class="tl-content">
+              <h4>Bangla Walking Street 逛一逛</h4>
+              <p>Simon Cabaret 出来顺路逛一下芭东酒吧街，看看热闹，喝杯啤酒，然后打车回酒店。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Bangla+Road+Patong+Phuket" target="_blank">&#128205; Bangla Road</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 10: 10/4 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">10/4</div>
+      <div class="day-info">
+        <h3>&#127754; 香蕉海滩浮潜 + NAKA 夜市</h3>
+        <p class="day-meta">周六 &middot; 普吉 &middot; 浮潜 / 悬崖餐厅 / Naka 夜市</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">7:30</div>
+            <div class="tl-content">
+              <h4>酒店早餐 & 准备浮潜装备</h4>
+              <p>早起吃早餐，检查浮潜装备清单（见下方贴士）。约 8:15-9:00 会有车来酒店接。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#e8f8f5;color:#0d7377">8:30</div>
+            <div class="tl-content">
+              <h4>&#127754; 香蕉海滩浮潜半日游 (Banana Beach)</h4>
+              <p>珊瑚岛（Coral Island / Koh Hae）上的香蕉海滩，从拉威码头坐长尾船约 15-20 分钟即到。水清沙白，鱼群丰富，比珊瑚岛长滩更安静，浮潜条件更好。可以在拉威码头直接和长尾船师傅议价，往返约 1500-2000 泰铢/船（含等待）。也可提前在 Klook 预订半日游。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Banana+Beach+Coral+Island+Phuket" target="_blank">&#128205; 香蕉海滩</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=Rawai+Beach+Pier+Phuket" target="_blank">&#128205; 拉威码头</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 岛上午餐 + 自由活动</h4>
+              <p>半日游一般含午餐。吃完可以在沙滩上晒太阳、拍照、玩水。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">14:00</div>
+            <div class="tl-content">
+              <h4>返回酒店</h4>
+              <p>半日游送回酒店，冲澡换衣服休息一下。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 悬崖餐厅二刷 / 逛商场（二选一）</h4>
+              <p><strong>选项 A：</strong>悬崖餐厅换一家坐坐，喝杯下午茶看海景<br>
+              <strong>选项 B：</strong>去 Central Phuket（普吉最大商场）或 Kata 附近逛逛，采购纪念品</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Commune+Karon+Phuket" target="_blank">&#128205; Commune</a> &nbsp;
+              <a href="https://www.google.com/maps/search/?api=1&query=Central+Phuket+Floresta" target="_blank">&#128205; Central Phuket</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">17:30</div>
+            <div class="tl-content">
+              <h4>&#127749; NAKA 周末夜市 (Naka Weekend Market)</h4>
+              <p>普吉最大最热闹的夜市！只有周六日才有。各种小吃、衣服、手工艺品、纪念品。从 Kata 打 Grab 约 20 分钟。建议早点去，晚了人挤人。</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Naka+Weekend+Market+Phuket" target="_blank">&#128205; NAKA 夜市</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">18:30</div>
+            <div class="tl-content">
+              <h4>&#127860; 晚餐：夜市里吃</h4>
+              <p>夜市里小吃超多：烤海鲜、芒果糯米饭、椰子冰淇淋、泰式炒河粉、各种串烧。边逛边吃，人均 200-400 泰铢吃到撑。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">20:30</div>
+            <div class="tl-content">
+              <h4>回酒店</h4>
+              <p>明天就要离开普吉了，早点回去收拾行李、休息。</p>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--card);border-radius:12px;padding:20px;margin-top:20px;border-left:4px solid var(--accent)">
+          <h4 style="color:var(--primary);margin-top:0">&#129404; 浮潜装备 & 注意事项</h4>
+          <p><strong>穿着：</strong></p>
+          <ul style="margin:4px 0 12px 0">
+            <li>泳衣 + 防晒长袖水母衣（防紫外线、防水母蜇伤）</li>
+            <li>浮潜鞋 / 沙滩鞋（防珊瑚礁划伤，别穿人字拖下水）</li>
+            <li>救生衣（一日游通常提供，务必穿）</li>
+          </ul>
+          <p><strong>必带物品：</strong></p>
+          <ul style="margin:4px 0 12px 0">
+            <li>浮潜面镜 + 呼吸管（自带更卫生；近视可买带度数的）</li>
+            <li>防水手机袋（拍水下照片）</li>
+            <li>防晒霜（选 reef-safe 环保防晒，普通防晒会伤珊瑚）</li>
+            <li>换洗干衣服 + 毛巾</li>
+            <li>现金泰铢（岛上无 ATM）</li>
+            <li>晕船药（如果容易晕船，提前吃）</li>
+          </ul>
+          <p><strong>注意事项：</strong></p>
+          <ul style="margin:4px 0 0 0">
+            <li>10 月是雨季尾声，出发前留意天气预报，风浪大时活动可能取消</li>
+            <li>后背和肩膀极易晒伤，防晒霜要反复涂</li>
+            <li>初次浮潜先在浅水区适应面镜和呼吸管呼吸</li>
+            <li>不要触碰珊瑚和海洋生物，不要站在珊瑚上</li>
+            <li>贵重物品锁在酒店保险箱，别带上船</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 11: 10/5 -->
+  <div class="day">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">10/5</div>
+      <div class="day-info">
+        <h3>回程：普吉 &#10140; 曼谷 &#10140; 上海</h3>
+        <p class="day-meta">周日 &middot; 普吉/曼谷 &middot; 两段航班回国</p>
+      </div>
+      <span class="arrow">&#9660;</span>
+    </div>
+    <div class="day-body">
+      <div class="day-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">9:00</div>
+            <div class="tl-content">
+              <h4>最后的海滩时光</h4>
+              <p>早起去 Kata 海滩最后泡一次水，或者在酒店泳池游泳</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Kata+Beach+Phuket" target="_blank">&#128205; Kata Beach</a>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:00</div>
+            <div class="tl-content">
+              <h4>&#127860; 午餐 & 采购</h4>
+              <p>最后吃一顿泰餐。去 Big C 或 7-11 买手信（小老板海苔、泰奶、青草药膏、乳胶枕）。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:00</div>
+            <div class="tl-content">
+              <h4>退房打包</h4>
+              <p>整理行李，退房。确认没有遗漏物品。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:30</div>
+            <div class="tl-content">
+              <h4>前往普吉机场</h4>
+              <p>Grab 去机场，Kata 到 HKT 约 45 分钟。提前到，逛免税店。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">19:10</div>
+            <div class="tl-content">
+              <h4>&#9992;&#65039; 飞曼谷</h4>
+              <p>PG284 &middot; 20:45 到达素万那普。不用出机场，在转机区域等红眼航班。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">20:45</div>
+            <div class="tl-content">
+              <h4>素万那普机场等转机</h4>
+              <p>机场有 Miracle Lounge 可以休息（约 1000 泰铢），也有餐厅和免税店。等 4 小时左右。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time" style="background:#fef9e7;color:#b7950b">00:30</div>
+            <div class="tl-content">
+              <h4>&#9992;&#65039; 红眼航班回上海</h4>
+              <p>TG662 &middot; 10/6 凌晨起飞，05:45 到达上海浦东。泰航有餐食。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVING -->
+<section id="diving">
+  <h2 class="section-title"><span class="icon">&#129343;</span> 皇帝岛深潜攻略</h2>
+  <p class="section-desc">体验深潜 &middot; 深潜 1 次 + 浮潜 &middot; 全程教练带领</p>
+
+  <div class="dive-schedule">
+    <h3>&#128337; 当日流程</h3>
+    <div class="dive-step"><span class="time">7:00-8:00</span><span class="desc">巴东卡塔码头集合上船，车程前往</span></div>
+    <div class="dive-step"><span class="time">8:00</span><span class="desc">到达码头（楼梯在边上等号），约 8:30 起航</span></div>
+    <div class="dive-step"><span class="time">航行中</span><span class="desc">教练讲解、器具介绍、穿泳衣准备、熟悉卫生间位置</span></div>
+    <div class="dive-step"><span class="time">10:30</span><span class="desc">第一次潜水 — 复习基础项目，AB 两组轮流下潜 + 上水休息</span></div>
+    <div class="dive-step"><span class="time">12:00</span><span class="desc">船上午餐 + 自由浮潜/游泳</span></div>
+    <div class="dive-step"><span class="time">13:30</span><span class="desc">第二次深潜 — AB 两组轮流，教练拍照拍视频</span></div>
+    <div class="dive-step"><span class="time">15:30</span><span class="desc">返航 — 冲淡水、换衣服、下船上车、教练传照片</span></div>
+    <div class="dive-step"><span class="time">16:30</span><span class="desc">送达酒店，行程结束</span></div>
+  </div>
+
+  <h3 style="margin-bottom:16px">&#128161; 潜水注意事项</h3>
+  <div class="tips-list">
+    <div class="tip-item important"><span class="tip-num">!</span><strong>潜水后 24 小时内不能坐飞机</strong>，所以安排在到达普吉后的第一个完整日。</div>
+    <div class="tip-item"><span class="tip-num">1</span>船上餐饮、饮料、水果都包含在费用内。</div>
+    <div class="tip-item"><span class="tip-num">2</span>潜水服通常女生白色透肤型，建议自带深色泳衣。男生黑色连体衣。多数教练可以提供防晒蓝光眼睛面罩。</div>
+    <div class="tip-item"><span class="tip-num">3</span>不可以化妆下潜，会污染镜片。戴隐形眼镜可以。建议用防水防晒霜。</div>
+    <div class="tip-item important"><span class="tip-num">!</span><strong>不怕出丑，不怕出丑，不怕出丑！</strong>教练每一个人从新手开始教。1v1 是一个教练带一个人下水并且出片。体验和出片看预算。</div>
+    <div class="tip-item"><span class="tip-num">4</span>教练可能会根据情况变深潜次数，请和教练确认。如果三次深潜约 1v1 1500 铢，1v2 2000 铢。</div>
+    <div class="tip-item"><span class="tip-num">5</span>每组 AB 两位教练 + 1 名船员和 2 名。</div>
+    <div class="tip-item"><span class="tip-num">6</span>船上有多个卫生间，船停的时候可以浮潜也可以浮水、教练帮拍照和视频。</div>
+    <div class="tip-item"><span class="tip-num">7</span>如果晕船早上吃早餐后就提前吃好晕船药。</div>
+    <div class="tip-item"><span class="tip-num">8</span>怕水不建议参加。</div>
+    <div class="tip-item"><span class="tip-num">9</span>建议每位带 50 铢 100 铢现金，船宿有时候可以买些小东西。</div>
+    <div class="tip-item"><span class="tip-num">10</span>提前下载好 Dji mimo 或其他 GoPro 器材 App。1v1 需求需要提前 2-10 天找教练确认预约。</div>
+  </div>
+</section>
+
+<!-- SEAFOOD -->
+<section id="seafood">
+  <h2 class="section-title"><span class="icon">&#129438;</span> 海鲜攻略 & 砍价指南</h2>
+  <p class="section-desc">班赞海鲜市场 (Banzaan Fresh Market)，芭东最大的海鲜市场</p>
+
+  <div class="card" style="margin-bottom:24px">
+    <span class="tag tag-spot">推荐市场</span>
+    <h3>班赞生鲜市场 (Banzaan Fresh Market)</h3>
+    <p class="detail">一楼买海鲜，二楼找档口加工。每天下午最新鲜。位于芭东江西冷商场对面。</p>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Banzaan+Fresh+Market+Patong+Phuket" target="_blank">&#128205; 查看地图</a>
+  </div>
+
+  <h3 style="margin-bottom:16px">&#128176; 砍价四步法</h3>
+  <div class="bargain-steps">
+    <div class="bargain-step">
+      <div class="step-num">1</div>
+      <h4>先逛一圈不买</h4>
+      <p>走完整个市场，心里记下各家价格，对比几家。不要在第一家就停下来。</p>
+    </div>
+    <div class="bargain-step">
+      <div class="step-num">2</div>
+      <h4>从 5-6 折开始砍</h4>
+      <p>开价的 50-60% 起砍。比如老板喊 1000，你从 500 开始。最终成交价一般在 6-7 折。</p>
+    </div>
+    <div class="bargain-step">
+      <div class="step-num">3</div>
+      <h4>多买多砍 打包议价</h4>
+      <p>一次买多种海鲜，打包一起谈价格更容易砍下来。"这些一起算便宜点"效果好。</p>
+    </div>
+    <div class="bargain-step">
+      <div class="step-num">4</div>
+      <h4>假装走人</h4>
+      <p>谈不拢就假装走，大概率被叫回来。也可以去旁边一家问价形成竞争。</p>
+    </div>
+  </div>
+
+  <h3 style="margin:24px 0 8px">&#128200; 参考价格（砍后合理价）</h3>
+  <table class="price-table">
+    <thead><tr><th>海鲜</th><th>参考价（泰铢/公斤）</th><th>砍价策略</th></tr></thead>
+    <tbody>
+      <tr><td>&#129438; 龙虾 (小青龙)</td><td>800-1200 / 只</td><td>看大小砍，2只以上打包谈</td></tr>
+      <tr><td>&#129424; 老虎虾</td><td>400-600 / 公斤</td><td>按数量买更容易砍</td></tr>
+      <tr><td>&#129408; 螃蟹</td><td>300-500 / 只</td><td>看饱满度，掂重量</td></tr>
+      <tr><td>&#129421; 鱿鱼</td><td>200-300 / 公斤</td><td>相对好砍，配合虾一起买</td></tr>
+      <tr><td>扇贝</td><td>150-250 / 公斤</td><td>一般不太砍得动</td></tr>
+      <tr><td>皮皮虾</td><td>400-600 / 公斤</td><td>挑活的，按条买</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card" style="margin-top:24px">
+    <span class="tag tag-tip">加工小贴士</span>
+    <h3>二楼加工推荐</h3>
+    <p class="detail">
+      &bull; 加工费：每道菜约 100-300 泰铢，看做法和大小<br>
+      &bull; 推荐做法：龙虾 &#8594; 芝士焗/蒜蓉蒸；虾 &#8594; 蒜蓉粉丝蒸；蟹 &#8594; 咖喱炒；鱿鱼 &#8594; 椒盐<br>
+      &bull; 加工档口推荐选人多的那家，出品稳定<br>
+      &bull; 可以用手机翻译器和档口沟通做法<br>
+      &bull; 额外点一份空心菜（约 60 泰铢）和白饭配着吃
+    </p>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <h2 class="section-title"><span class="icon">&#128221;</span> 实用贴士</h2>
+  <div class="cards cols-3">
+    <div class="card">
+      <span class="tag tag-tip">交通</span>
+      <h3>打车 App</h3>
+      <p class="detail">下载 <strong>Grab</strong>（东南亚版滴滴），叫车最方便。曼谷也可用 <strong>Bolt</strong>。比出租车便宜且不用砍价。</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-tip">网络</span>
+      <h3>电话卡</h3>
+      <p class="detail">机场买 <strong>AIS / TrueMove</strong> 旅游卡，8天约 299 泰铢，含无限流量。也可提前在淘宝买 eSIM。</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-tip">货币</span>
+      <h3>换汇 & 支付</h3>
+      <p class="detail">路边摊用现金，商场和餐厅可刷卡。推荐到 <strong>SuperRich</strong> 换泰铢（汇率最好）。支付宝在 7-11、商场可用。</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-tip">天气</span>
+      <h3>9-10月天气</h3>
+      <p class="detail">雨季尾声，每天可能有短暂阵雨（通常下午）。带把小伞或雨衣。温度 25-33°C，防晒霜必备。</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-tip">必买</span>
+      <h3>伴手礼</h3>
+      <p class="detail">小老板海苔、Benton 蜗牛面膜、泰国乳胶枕、青草药膏、冬阴功方便面、手标泰茶、椰子油</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-tip">注意</span>
+      <h3>安全提醒</h3>
+      <p class="detail">寺庙需穿长裤长袖、出租车打表（by meter）、路边按摩先谈好价格、不要在 Bangla Road 跟人拍照后被要钱</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&#127468;&#127463; 泰国旅行计划 2025 &nbsp;|&nbsp; Made with &#10084;&#65039;</p>
+  <p style="margin-top:8px;font-size:12px;opacity:.6">所有地图链接均指向 Google Maps，点击后可直接导航</p>
+</footer>
+
+<script>
+function toggleDay(header){
+  const day=header.parentElement;
+  day.classList.toggle('open');
+}
+
+// nav active state + scroll shadow
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('nav a');
+const navEl=document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-100)current=s.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+current)a.classList.add('active');
+  });
+  navEl.classList.toggle('scrolled',window.scrollY>50);
+});
+
+// inject cover image + emoji for each day
+const dayCovers={
+  '9/25':{img:'1508009603885-50cf7c579365',tint:'#3498db',emoji:'&#9992;&#65039;',title:'抵达曼谷',sub:'落地素万那普，入住 YANH 酒店'},
+  '9/26':{img:'1590330297626-d7aff25a0431',tint:'#f0a500',emoji:'&#128081;',title:'大皇宫 + 孔剧 + 泰拳',sub:'皇家寺庙 · 传统表演 · 拳击圣地'},
+  '9/27':{img:'1528181304800-259b08848526',tint:'#16a085',emoji:'&#128740;&#65039;',title:'水门寺 + ICONSIAM',sub:'翡翠佛塔 · 湄南河夜游'},
+  '9/28':{img:'1552832230-c0197dd311b5',tint:'#e74c3c',emoji:'&#128717;&#65039;',title:'乍都乍市场 + 按摩',sub:'万人市场 · 泰式古法按摩'},
+  '9/29':{img:'1436491865332-7a61a109cc05',tint:'#8e44ad',emoji:'&#9992;&#65039;',title:'休整 + 飞普吉岛',sub:'睡懒觉 · VZ316 夜航'},
+  '9/30':{img:'1583212292454-1fe6229603b7',tint:'#2980b9',emoji:'&#129440;',title:'皇帝岛深潜一日游',sub:'两次深潜 · 教练带拍'},
+  '10/1':{img:'1503917988258-f87a78e3c995',tint:'#d35400',emoji:'&#128024;',title:'大象营 + 射击体验',sub:'和大象亲密接触 · 真枪实弹'},
+  '10/2':{img:'1552465011-b4e21bf6e79a',tint:'#e67e22',emoji:'&#127752;',title:'悬崖餐厅 + 清吧',sub:'看海放空 · 鸡尾酒之夜'},
+  '10/3':{img:'1559339352-11d035aa65de',tint:'#c0392b',emoji:'&#129438;',title:'芭东逛吃 + 天皇秀',sub:'班赞海鲜 · Simon Cabaret'},
+  '10/4':{img:'1507525428034-b723cf961d3e',tint:'#0d7377',emoji:'&#127754;',title:'香蕉海滩浮潜 + 夜市',sub:'珊瑚岛浮潜 · NAKA 夜市'},
+  '10/5':{img:'1436491865332-7a61a109cc05',tint:'#34495e',emoji:'&#9992;&#65039;',title:'回程：普吉 - 曼谷 - 上海',sub:'两段航班 · 红眼回国'},
+};
+document.querySelectorAll('.day').forEach(day=>{
+  const numEl=day.querySelector('.day-num');
+  if(!numEl)return;
+  const num=numEl.textContent.trim();
+  const cfg=dayCovers[num];
+  if(!cfg)return;
+  const content=day.querySelector('.day-content');
+  if(!content)return;
+  const cover=document.createElement('div');
+  cover.className='day-cover';
+  const tintHex=cfg.tint;
+  cover.style.background=`linear-gradient(135deg,${tintHex}dd 0%,${tintHex}77 60%,transparent 100%),url('https://images.unsplash.com/photo-${cfg.img}?w=900&h=360&fit=crop&q=80') center/cover,linear-gradient(135deg,${tintHex},${tintHex}aa)`;
+  cover.innerHTML=`<div class="cover-inner"><span class="cover-emoji">${cfg.emoji}</span><div><div class="cover-title">${cfg.title}</div><div class="cover-sub">${cfg.sub}</div></div></div>`;
+  content.insertBefore(cover,content.firstChild);
+});
+
+// scroll reveal animation
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('.card,.day,.section-title,.dive-schedule,.bargain-step,.price-table,.tip-item').forEach((el,i)=>{
+  el.classList.add('fade-in');
+  el.style.transitionDelay=(i%4)*80+'ms';
+  observer.observe(el);
+});
+
+// hero stat counter animation
+function animateCounters(){
+  document.querySelectorAll('.hero .stat .num').forEach(el=>{
+    const target=parseInt(el.textContent);
+    if(isNaN(target))return;
+    el.textContent='0';
+    let current=0;
+    const step=Math.max(1,Math.floor(target/30));
+    const timer=setInterval(()=>{
+      current+=step;
+      if(current>=target){current=target;clearInterval(timer);}
+      el.textContent=current;
+    },40);
+  });
+}
+animateCounters();
+</script>
+</body>
+</html>
